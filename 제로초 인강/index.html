@@ -195,12 +195,15 @@
                 </button>
             </div>
             <style>
-                #search > form{
+                #search > form {
                     display: inline-flex;
                     width: 708px;
                     height: 60px;
                     border: 1px solid #03c75a;
                     border-radius: 33px;
+                }
+                #search > form:hover {
+                    box-shadow: 0 2px 4px rgba(0,0,0,.12);
                 }
                 #search > form > input {
                     width: 480px;
@@ -239,6 +242,12 @@
                     border: none;
                     outline: none;
                 }
+                #search-input::placeholder{
+                    color: white;
+                }
+                #search-input:focus::placeholder{
+                    color: rgb(230, 230, 230);
+                }
                 #search-right{
                     flex: 0.8;
                     display: flex;
@@ -260,6 +269,9 @@
                     width: 24px;
                     height: 14px;
                 }
+                #search-keyboard:hover::before{
+                    filter: brightness(0.7);
+                }
                 #search-recent::before{
                     content: "";
                     display: block;
@@ -270,7 +282,15 @@
                     width: 10px;
                     height: 6px;
                 }
-                #search-button::before{
+                #search-button {
+                    padding: 17px 27px 16px 10px;
+                }
+                #search-button > div {
+                    /* background:#03c75a; */
+                    width: 25px;
+                    height: 25px;
+                }
+                #search-button > div::before{
                     content: "";
                     display: block;
                     background-image: url(https://pm.pstatic.net/resources/asset/sp_main.d5b6c236.png);
