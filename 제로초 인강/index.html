@@ -227,6 +227,20 @@
                     margin-right: 12px; 
                     height: 100%;   
                     padding-left: 10px;
+                    position: relative;
+                }
+                #search-svg:after{
+                    display: none;
+                }
+                #search > form:focus-within #search-svg::after {
+                    position: absolute;
+                    content:'';
+                    width: 1px;
+                    height: 30px;
+                    background-color: #e4e4e4;
+                    display: inline-block;
+                    right: 0;
+                    top: 15px;
                 }
                 #search-svg svg {
                     width: 24px;
