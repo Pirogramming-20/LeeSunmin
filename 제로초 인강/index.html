@@ -696,6 +696,24 @@
                     margin: 10px 0 0 5px;
                     vertical-align:3px;
                 }
+                #main-newstand-gray .right {
+                    display: flex;
+                }
+                #main-newstand-gray .bold {
+                    font-weight: bold;
+                    padding-left: 25px;
+                    position: relative;
+                }
+                #main-newstand-gray .bold::before {
+                    content: '';
+                    position: absolute;
+                    top: 7px;
+                    left: 12px;
+                    width: 1px;
+                    height: 12px;
+                    background-color: #d3d5d7;
+                    background-color: var(--color_dot_divider);
+                }
                 #main-newstand-animation {
                     padding-left: 25px;
                     position: relative;
@@ -716,7 +734,6 @@
                     position: relative;
                     top: -1px;
                     line-height: 26px;
-
                 }
                 #main-newstand-animation a:first-of-type::after {
                     content: '';
@@ -736,26 +753,9 @@
                     display: inline-block;
                     overflow: hidden;
                 }
-                #main-newstand-gray .right {
-                    display: flex;
-                }
-                #main-newstand-gray .bold {
-                    font-weight: bold;
-                    padding-left: 25px;
-                    position: relative;
-                }
-                #main-newstand-gray .bold::before {
-                    content: '';
-                    position: absolute;
-                    top: 7px;
-                    left: 12px;
-                    width: 1px;
-                    height: 12px;
-                    background-color: #d3d5d7;
-                    background-color: var(--color_dot_divider);
-                }
                 #main-newstand a {
                     text-decoration: none;
+                    color:#404040;
                 }
                 #main-newstand a:visited {
                     color: inherit;
@@ -787,6 +787,94 @@
                 #main-newstand footer {
                     border-top: 1px solid var(--color_border_in);
                     padding: 10px 0 11px;
+                    font-size: 1.3rem;
+                    line-height: 35px;
+                    font-weight: 600;
+                    color: #606060;
+                    color: var(--color_caption2);
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                }
+                #main-newstand footer .list, #main-newstand footer .grid {
+                    position: absolute;
+                    border: none;
+                    cursor: pointer;
+                    top: 0;
+                    background-color: transparent;
+                }
+                #main-newstand footer .list{
+                    right: 49px;
+                    padding: 18px 9px 18px 20px;
+                }
+                #main-newstand footer .list::before {
+                    content: '';
+                    display: inline-block;
+                    background-image: url('./sp_main.png');
+                    background-size: 433px 412px;
+                    background-position: -118px -69px;
+                    background-repeat: no-repeat;
+                    width: 20px;
+                    height: 20px;
+                }
+                #main-newstand footer .list:hover::before {
+                    background-position: -363px -333px;
+                }
+                #main-newstand footer .grid {
+                    right: 0;
+                    padding: 18px 20px 18px 20px;
+                }
+                #main-newstand footer .grid::before {
+                    content:'';
+                    display: inline-block;
+                    background-image: url('./sp_main.png');
+                    background-size: 433px 412px;
+                    background-position: -388px -189px;
+                    background-repeat: no-repeat;
+                    width: 20px;
+                    height: 20px;
+                }
+                #main-newstand footer .prev, #main-newstand footer .next {
+                    background: none;
+                    border: none;
+                    content:'';
+                    width: 36px;
+                    height: 36px;
+                    border: 1px solid #dadcdf;
+                    border: 1px solid var(--color_button_border);
+                    background-color: #fff;
+                    background-color: var(--color_button1_bg);
+                    display: inline-block;
+                    box-shadow: 0 1px 2px 0 rgba(0,0,0,.06);
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #main-newstand footer .prev::before, #main-newstand footer .next::before{
+                    content: '';
+                    display: block;
+                    background-image: url("./sp_main.png");
+                    background-size: 433px 412px;
+                    background-position: -168px -400px;
+                    background-repeat: no-repeat;
+                    width: 10px;
+                    height: 12px;
+                }
+                #main-newstand footer .prev::before{
+                    transform: rotate(180deg);
+                }
+                #main-newstand footer .text {
+                    padding: 0 16px;
+                    width: 156px;
+                }
+
+                #main-newstand footer .news {
+                    color: var(--color_news)
+                }
+                #main-newstand footer .total {
+                    color: rgba(96,96,96,.5);
                 }
                 </style>
             <main id="main">
@@ -842,11 +930,11 @@
                             </div>
                         </div>
                         <footer>
-                            <button><span class="blind">이전</span></button>
-                            <div>언론사 더보기1페이지전체/4</div>
-                            <button><span class="blind">다음</span></button>
-                            <button><span class="blind">목록보기</span></button>
-                            <button><span class="blind">격자보기</span></button>
+                            <button class="prev"><span class="blind">이전 페이지</span></button>
+                            <div class="text"><span class="news">언론사</span>&nbsp;&nbsp;더보기 1<span class="total">/4</span></div>
+                            <button class="next"><span class="blind">다음 페이지</span></button>
+                            <button class="list"><span class="blind">목록보기</span></button>
+                            <button class="grid"><span class="blind">격자보기</span></button>
                         </footer>
                     </section>
                     <section id="naver-shopping"></section>
