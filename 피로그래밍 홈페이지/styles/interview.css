@@ -1,8 +1,8 @@
 .interview-body {
     display: grid;
     color: white;
-    grid-gap: 5px;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
     flex-direction: column;
     justify-content: space-between;
     padding: 10px var(--offset);
@@ -10,6 +10,16 @@
     width: min(100%, 1200px);
     margin: auto;
     gap: 10px;
+}
+@media screen and (max-width: 1000px){
+    .interview-body{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 600px){
+    .interview-body{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 .interview-box {
     display: flex;
@@ -42,11 +52,55 @@
     width: 100%;
     padding: 13px 0 0 0;
 }
-.interview-box img{
+#interview_picture {
     width: 77px;
     height: 77px;
     border-radius: 50%;
     top: 0;
     left: 0;
     margin: 0;
+}
+.interview_image {
+    display: block;
+    width: 77px; 
+    height: 77px; 
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.interview-box:hover #interview_picture {
+    transform: scale(1.2);
+}
+.interview-box:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.project-hamburger{
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    right: var(--gutter);
+    top: var(--gutter);
+    display: flex;
+    flex-direction: column;
+}
+#hamburger-icon3 {
+    align-content: flex-start;
+    flex-direction: column;
+    width: 3rem;
+}
+#hamburger-icon3 > div {
+    height: 2.5px;
+    margin: 5px 0;
+    background-color: white;
+    transition: 0.3s;
+}
+.interview-box:hover #hamburger-icon3 div:nth-of-type(1) {
+    width: 70%; 
+    transition: width 0.3s ease; 
+}
+.interview-box:hover #hamburger-icon3 div:nth-of-type(3) {
+    width: 70%;
+    margin-left: auto; 
+    transition: width 0.3s ease; 
 }
