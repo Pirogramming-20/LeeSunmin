@@ -1,5 +1,6 @@
 from itertools import cycle
 
+
 def validate_input():
     flag = True
     while flag:
@@ -22,6 +23,14 @@ def round_result(num, input_num, player):
     for i in range(input_num):
         num += 1
         print(f"{player} : ", num)
+        if num >= 31:
+            break
+    return num
+
+
+def brGame(num, player):
+    input_num = validate_input()
+    num = round_result(num, input_num, player)
     return num
 
 
@@ -31,8 +40,7 @@ if __name__ == "__main__":
     player_cycle = cycle(player_list)
     while True:
         player = next(player_cycle)
-        input_num = validate_input()
-        num = round_result(num, input_num, player)
+        num = brGame(num, player)
         if num >= 31:
             print(f"{player} win!")
-            break # 게임 종료
+            break  # 게임 종료
