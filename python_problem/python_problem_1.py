@@ -1,3 +1,5 @@
+from itertools import cycle
+
 def validate_input():
     flag = True
     while flag:
@@ -26,7 +28,8 @@ def round_result(num, input_num, player):
 if __name__ == "__main__":
     num = 0
     player_list = ["playerA", "playerB"]
-    input_num = validate_input()
-    num = round_result(num, input_num, "playerA")
-    input_num = validate_input()
-    num = round_result(num, input_num, "playerB")
+    player_cycle = cycle(player_list)
+    while num < 31:
+        player = next(player_cycle)
+        input_num = validate_input()
+        num = round_result(num, input_num, player)
