@@ -1,6 +1,3 @@
-num = 0
-
-
 def validate_input():
     flag = True
     while flag:
@@ -19,13 +16,17 @@ def validate_input():
     return int(input_num)
 
 
-def print_player_input(num, input_num, player):
+def round_result(num, input_num, player):
     for i in range(input_num):
         num += 1
         print(f"{player} : ", num)
+    return num
 
 
 if __name__ == "__main__":
+    num = 0
+    player_list = ["playerA", "playerB"]
     input_num = validate_input()
-    player = "playerA"
-    print_player_input(num, input_num, player)
+    num = round_result(num, input_num, "playerA")
+    input_num = validate_input()
+    num = round_result(num, input_num, "playerB")
