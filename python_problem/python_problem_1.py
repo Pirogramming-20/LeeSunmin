@@ -29,7 +29,10 @@ if __name__ == "__main__":
     num = 0
     player_list = ["playerA", "playerB"]
     player_cycle = cycle(player_list)
-    while num < 31:
+    while True:
         player = next(player_cycle)
         input_num = validate_input()
         num = round_result(num, input_num, player)
+        if num >= 31:
+            print(f"{player} win!")
+            break # 게임 종료
