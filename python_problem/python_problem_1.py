@@ -1,5 +1,5 @@
 from itertools import cycle
-
+from random import randint
 
 def validate_input():
     flag = True
@@ -29,14 +29,18 @@ def round_result(num, input_num, player):
 
 
 def brGame(num, player):
-    input_num = validate_input()
-    num = round_result(num, input_num, player)
+    if (player == "computer"):
+        input_num = randint(1, 3) # player가 computer일 때, 1~3 중 랜덤으로 숫자를 부름
+        num = round_result(num, input_num, player)
+    else:
+        input_num = validate_input()
+        num = round_result(num, input_num, player)
     return num
 
 
 if __name__ == "__main__":
     num = 0
-    player_list = ["playerA", "playerB"]
+    player_list = ["computer", "player"]
     player_cycle = cycle(player_list)
     while True:
         player = next(player_cycle)
