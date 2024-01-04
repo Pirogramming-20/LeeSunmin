@@ -19,5 +19,13 @@ def validate_input():
     return int(input_num)
 
 
+def print_player_input(num, input_num, player):
+    for i in range(input_num):
+        num += 1
+        print(f"{player} : ", num)
+
+
 if __name__ == "__main__":
     input_num = validate_input()
+    player = "playerA"
+    print_player_input(num, input_num, player)
