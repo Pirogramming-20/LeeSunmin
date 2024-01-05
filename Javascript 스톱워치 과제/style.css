@@ -135,6 +135,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 #records-list>li {
     display: flex;
     justify-content: space-between;
@@ -146,6 +147,8 @@ body {
     font-family: "Pretendard-Regular";
     font-size: 30px;
 }
+
 #records-list>li>i {
     cursor: pointer;
+    margin: 0;
 }
