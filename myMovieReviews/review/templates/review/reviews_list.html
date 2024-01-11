@@ -7,19 +7,17 @@
     <title>myMovieReviews</title>
     <link rel="stylesheet" href="{% static 'css/review.css' %}">
 </head>
-<body class="dark:bg-gray-950 min-h-screen">
+<body>
   <header class="header">
     <h1 class="title">myMovieReviews</h1>
     <button class="add-review-btn">Add New Review</button>
   </header>
 
-
-
+  <!-- 각 영화들의 개요 -->
   <section class="movie-grid">
-
     {% for review in reviews %}
     <div>
-      <a href="" class="movie-title">{{review.title}}</a>
+      <a href="/review/{{review.id}}" class="movie-title">{{review.title}}</a>
       <img src="" alt="">
       <div>
         <h3 class="movie-release_year">개봉년도 {{review.release_year}}</h3>
@@ -28,7 +26,6 @@
       </div>
     </div>
     {% endfor %}
-
   </section>
 </body>
 

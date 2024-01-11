@@ -8,3 +8,10 @@ def reviews_list(request):
         "reviews": reviews
     }
     return render(request, "review/reviews_list.html", context)
+
+def review_detail(request, pk):
+    review = Review.objects.get(id=pk)
+    context = {
+        "review": review
+    }
+    return render(request, "review/review_detail.html", context)

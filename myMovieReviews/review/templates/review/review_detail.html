@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMovieReviews</title>
+    <link rel="stylesheet" href="{% static 'css/review.css' %}">
+</head>
+<body>
+  <!-- 특정 영화 하나의 디테일 페이지 -->
+    <div>
+        <h3>{{review.title}}</h3>
+        <div class="review-top_box">
+            <h3>개봉년도 {{review.release_year}}</h3>
+            <h3>감독 {{review.director}}</h3>
+            <h3>주연 {{review.main_actor}}</h3>
+            <h3>장르 {{review.genre}}</h3>
+            <h3>별점 {{review.score}}</h3>
+            <h3>러닝타임 {{review.running_time}}</h3>
+        </div>
+        <div class="review-bottom_box">
+            <p>{{review.content}}</p>
+    </div>
+</body>
+
+</html>
+
