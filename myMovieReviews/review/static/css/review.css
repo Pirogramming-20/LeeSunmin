@@ -77,6 +77,24 @@ a {
     font-size: 2rem;
     font-weight: bold;
 }
+#review-detail .review-header div{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+    color: #E2E2E2;
+}
+#review-detail .review-header input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 0;
+    height: 1.3rem;
+    cursor: pointer;
+}
 
 #review-detail .review-top_box,
 #review-detail .review-bottom_box {
@@ -125,6 +143,7 @@ a {
     border-radius: 4px;
     font-size: 16px;
     margin-top: 0.6rem;
+    vertical-align: baseline;
 }
 
 .review-create-item textarea {

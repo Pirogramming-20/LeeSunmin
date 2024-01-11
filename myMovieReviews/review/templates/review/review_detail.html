@@ -20,8 +20,14 @@
         <div class="review-header">
             <h2>{{review.title}}</h2>
             <div>
-                <a href="/review/{{review.id}}/update">수정</a>
-                <a href="">삭제</a>
+                <form action="/review/{{review.id}}/update" method="get">
+                    {% csrf_token %}
+                    <input type="submit" value="수정"></input>
+                </form>
+                <form action="/review/{{review.id}}/delete" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="삭제"></input>
+                </form>
             </div>
         </div>
         <div class="review-top_box">
