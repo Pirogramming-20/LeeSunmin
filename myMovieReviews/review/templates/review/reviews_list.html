@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMovieReviews</title>
+    <link rel="stylesheet" href="{% static 'css/review.css' %}">
+</head>
+<body class="dark:bg-gray-950 min-h-screen">
+  <header class="header">
+    <h1 class="title">myMovieReviews</h1>
+    <button class="add-review-btn">Add New Review</button>
+  </header>
+
+
+
+  <section class="movie-grid">
+
+    {% for review in reviews %}
+    <div>
+      <a href="" class="movie-title">{{review.title}}</a>
+      <img src="" alt="">
+      <div>
+        <h3 class="movie-release_year">개봉년도 {{review.release_year}}</h3>
+        <h3 class="movie-genre">장르 {{review.genre}}</h3>
+        <h3 class="movie-score">별점 {{review.score}}</h3>
+      </div>
+    </div>
+    {% endfor %}
+
+  </section>
+</body>
+
+</html>
+
