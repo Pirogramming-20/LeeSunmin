@@ -6,6 +6,11 @@
     font-style: normal;
 }
 
+a {
+    text-decoration: none !important;
+    color: #333 !important;
+}
+
 .header {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -18,7 +23,11 @@
 .title {
     font-size: 2rem;
     font-weight: bold;
-    color: #333;
+}
+
+.add-new_review{
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 
