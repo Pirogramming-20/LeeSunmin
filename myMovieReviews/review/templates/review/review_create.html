@@ -18,7 +18,7 @@
   <!-- 새 리뷰 작성 페이지 -->
     <div id="review-create">
         <h1>새 리뷰 작성</h1>
-        <form action="/review/create" method="POST">
+        <form action="/review/create" method="post">
             {% csrf_token %}
             {% for field in form %}
                 <div class="review-create-item">
