@@ -9,15 +9,15 @@
 </head>
 <body>
   <!-- 특정 영화 하나의 디테일 페이지 -->
-    <div>
-        <h3>{{review.title}}</h3>
+    <div id="review-detail">
+        <h2>{{review.title}}</h2>
         <div class="review-top_box">
-            <h3>개봉년도 {{review.release_year}}</h3>
-            <h3>감독 {{review.director}}</h3>
-            <h3>주연 {{review.main_actor}}</h3>
-            <h3>장르 {{review.genre}}</h3>
-            <h3>별점 {{review.score}}</h3>
-            <h3>러닝타임 {{review.running_time}}</h3>
+            <p>개봉년도 {{review.release_year}}</p>
+            <p>감독 {{review.director}}</p>
+            <p>주연 {{review.main_actor}}</p>
+            <p>장르 {{review.genre}}</p>
+            <p>별점 {{review.score}}</p>
+            <p>러닝타임 {{review.running_time}}</p>
         </div>
         <div class="review-bottom_box">
             <p>{{review.content}}</p>

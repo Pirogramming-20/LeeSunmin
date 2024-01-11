@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myMovieReviews</title>
     <link rel="stylesheet" href="{% static 'css/review.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
   <header class="header">
@@ -13,20 +14,20 @@
     <a href="/review/create" class="add-new_review">Add New Review</a>
   </header>
 
-  <!-- 각 영화들의 개요 -->
-  <section class="movie-grid">
+  <!-- 각 영화들의 개요 --> 
+  <div class="container text-center" id="movie-reviews-container">    
+    <div class="row row-cols-3">
     {% for review in reviews %}
-    <div>
-      <a href="/review/{{review.id}}" class="movie-title">{{review.title}}</a>
-      <img src="" alt="">
-      <div>
-        <h3 class="movie-release_year">개봉년도 {{review.release_year}}</h3>
-        <h3 class="movie-genre">장르 {{review.genre}}</h3>
-        <h3 class="movie-score">별점 {{review.score}}</h3>
-      </div>
-    </div>
+        <div class="col"><a href="/review/{{review.id}}" class="movie-title">{{review.title}}</a>
+        {% comment %} <img src="" alt=""> {% endcomment %}
+          <p class="movie-release_year">개봉년도 {{review.release_year}}</p>
+          <p class="movie-genre">장르 {{review.genre}}</p>
+          <p class="movie-score">별점 {{review.score}}</p>
+        </div>
     {% endfor %}
-  </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

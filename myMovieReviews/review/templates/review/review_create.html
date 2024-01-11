@@ -9,19 +9,20 @@
 </head>
 <body>
   <!-- 새 리뷰 작성 페이지 -->
-    <div>
+    <div id="review-create">
         <h1>새 리뷰 작성</h1>
         <form action="/review/create" method="POST">
             {% csrf_token %}
-            제목: <input type="text" name="title" placeholder="제목">
-            개봉년도: <input type="int" name="release_year" placeholder="개봉년도">
-            장르: <input type="text" name="genre" placeholder="장르">
-            별점: <input type="text" name="score" placeholder="별점">
-            러닝타임: <input type="text" name="running_time" placeholder="러닝타임">
-            리뷰: <textarea name="content" cols="30" rows="10" placeholder="리뷰"></textarea>
-            감독: <input type="text" name="director" placeholder="감독">
-            주연: <input type="text" name="main_actor" placeholder="주연">
-            <div>
+            {% for field in form %}
+                <div class="review-create-item">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <span style="color: red;">{{ field.errors }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="review-create-item">
                 <input type="submit" value="Save">
             </div>
         </form>
