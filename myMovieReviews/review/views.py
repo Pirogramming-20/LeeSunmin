@@ -34,4 +34,19 @@ def review_create(request):
         }
         return render(request, "review/review_create.html", context)
 
+def review_update(request, pk):
+    review = Review.objects.get(id=pk)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=review)
+        form.save()
+        return redirect(f"/review/{pk}")
+    else:
+        form = ReviewForm(instance=review)
+        context = {
+            "review": review,
+            "form": form
+        } # review.id가 필요해서 review도 넘겨줌
+        return render(request, 'review/review_update.html', context)
+
+
 

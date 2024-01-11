@@ -67,7 +67,13 @@ a {
     margin: 5%;
 }
 
-#review-detail h2 {
+#review-detail .review-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+#review-detail .review-header h2 {
     font-size: 2rem;
     font-weight: bold;
 }
@@ -102,6 +108,8 @@ a {
 #review-create h1 {
     text-align: center;
     margin-bottom: 40px;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .review-create-item {

@@ -17,7 +17,13 @@
   </header>
   <!-- 특정 영화 하나의 디테일 페이지 -->
     <div id="review-detail">
-        <h2>{{review.title}}</h2>
+        <div class="review-header">
+            <h2>{{review.title}}</h2>
+            <div>
+                <a href="/review/{{review.id}}/update">수정</a>
+                <a href="">삭제</a>
+            </div>
+        </div>
         <div class="review-top_box">
             <p>개봉년도 {{review.release_year}}</p>
             <p>감독 {{review.director}}</p>

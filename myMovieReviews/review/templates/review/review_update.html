@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMovieReviews</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/review.css' %}">
+</head>
+<body>
+    <header class="header">
+    <a href="/review">
+      <h1 class="title">myMovieReviews</h1>
+    </a>
+    <a href="/review/create" class="add-new_review">Add New Review</a>
+  </header>
+  <!-- 글 수정하기 페이지 -->
+    <div id="review-create">
+        <h1>글 수정하기</h1>
+        <form action="/review/{{review.id}}/update" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="review-create-item">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <span style="color: red;">{{ field.errors }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="review-create-item">
+                <input type="submit" value="Edit">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
