@@ -13,10 +13,12 @@
         })
         */
        // Asynchronous 비동기 실행
-        function callbackme(){
-            console.log('response end');
-        }
-        fetch('html').then(callbackme);
+        fetch('html').then(function(response){
+            console.log(response.status);
+            if(response.status == '404') {
+                alert('Not Found')
+            }
+        });
         console.log(1);
         console.log(2);
     ">
