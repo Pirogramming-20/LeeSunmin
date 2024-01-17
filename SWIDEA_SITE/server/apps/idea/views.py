@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse  
+from django.http import JsonResponse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Idea, IdeaStar
 from .forms import IdeaForm
 
@@ -7,6 +8,8 @@ from .forms import IdeaForm
 def main(request):
     ideas = Idea.objects.all()
     sort = request.GET.get('sort', '')
+    page = request.GET.get('page', '')
+
     if sort == 'name':
         ideas = Idea.objects.all().order_by('title')
     if sort == "bookmark":
@@ -17,8 +20,21 @@ def main(request):
         ideas = Idea.objects.all().order_by('-created_at')
     if sort == 'interest':
         ideas = Idea.objects.all().order_by('-interest')
+        
+    
+    print(ideas)
+    paginator = Paginator(ideas, 4)
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        page_obj = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        page_obj = paginator.page(page)
 
-    ctx = {"ideas": ideas}
+
+    ctx = {"ideas": ideas, "page_obj": page_obj, "paginator": paginator, "sort": sort}
     return render(request, 'idea/idea_list.html', ctx)
 
 def bookmark(request, pk):
