@@ -7,6 +7,13 @@
   <p>{{devtool.content}}</p>
 
   <hr />
+  <h2>만들 수 있는 SW 목록</h2>
+  {% for rel_idea in related_ideas %}
+      <a href="{% url 'idea:detail' rel_idea.pk %}" class="btn btn-success">
+        {{rel_idea.title}}
+      </a>
+  {% endfor %}
+  <hr />
   <form action="{% url 'devtool:delete' devtool.pk %}" method="POST">
     {%csrf_token%}
     <button type="submit" class="btn btn-danger">삭제</button>
@@ -14,3 +21,5 @@
     <a href="{% url 'devtool:update' devtool.pk %}" class="btn btn-primary">수정</a>
   </form>
 {% endblock content %}
+
+

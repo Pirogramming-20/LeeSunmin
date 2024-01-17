@@ -9,8 +9,9 @@ def devtool_list(request):
     return render(request, 'devtool/devtool_list.html', ctx)
 
 def detail(request, pk):
-    devtool = Devtool.objects.get(id=pk)
-    ctx = {"devtool": devtool}
+    devtool = Devtool.objects.get(id=pk)    
+    all_ideas = devtool.idea_set.all()  # 역참조
+    ctx = {"devtool": devtool, "related_ideas": all_ideas}
     return render(request, 'devtool/devtool_detail.html', ctx)
 
 def create(request):    
