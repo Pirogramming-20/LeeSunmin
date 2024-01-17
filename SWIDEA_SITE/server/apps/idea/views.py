@@ -20,9 +20,7 @@ def main(request):
         ideas = Idea.objects.all().order_by('-created_at')
     if sort == 'interest':
         ideas = Idea.objects.all().order_by('-interest')
-        
-    
-    print(ideas)
+
     paginator = Paginator(ideas, 4)
     try:
         page_obj = paginator.page(page)
@@ -33,9 +31,10 @@ def main(request):
         page = paginator.num_pages
         page_obj = paginator.page(page)
 
-
-    ctx = {"ideas": ideas, "page_obj": page_obj, "paginator": paginator, "sort": sort}
+    ctx = {"ideas": ideas, "page_obj": page_obj,
+           "paginator": paginator, "sort": sort}
     return render(request, 'idea/idea_list.html', ctx)
+
 
 def bookmark(request, pk):
     if request.method == "POST":
@@ -52,12 +51,14 @@ def bookmark(request, pk):
         idea.save()
     return JsonResponse({'pk': pk, 'bookmark': bookmark})
 
+
 def change_interest(request, pk, delta):
     if request.method == 'POST':
         idea = Idea.objects.get(id=pk)
         idea.interest += int(delta)
         idea.save()
         return JsonResponse({'interest': idea.interest})
+
 
 def detail(request, pk):
     idea = Idea.objects.get(id=pk)

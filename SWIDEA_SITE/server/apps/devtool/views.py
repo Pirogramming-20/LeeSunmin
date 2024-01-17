@@ -1,11 +1,30 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Devtool
 from .forms import DevtoolForm
 
 # Create your views here.
 def devtool_list(request):
+    search_txt = request.GET.get("search_txt", '')
     devtools = Devtool.objects.all()
-    ctx = {"devtools": devtools}
+    page = request.GET.get('page', '')
+
+    if search_txt:
+        devtools = Devtool.objects.filter(name__contains=search_txt)
+
+    paginator = Paginator(devtools, 6)
+
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        page_obj = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        page_obj = paginator.page(page)
+
+    ctx = {"devtools": devtools, "page_obj": page_obj,
+           "paginator": paginator, "search_txt": search_txt}
     return render(request, 'devtool/devtool_list.html', ctx)
 
 def detail(request, pk):
