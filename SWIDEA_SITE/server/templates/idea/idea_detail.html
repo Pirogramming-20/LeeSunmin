@@ -8,8 +8,13 @@
 <img src="{% static 'idea/image/no_img.png' %}" alt="대체 텍스트" />
 {% endif %}
   <h1>{{idea.title}}</h1>
+  {% if idea.ideastar %} 
+    <i class="ri-star-fill"></i>
+  {% else %}
+    <i class="ri-star-line"></i>
+  {% endif %}
   <p>1. 아이디어 관심도: {{idea.interest}}</p>
-  <p>2. 예상 개발 툴: {{idea.devtool}}</p>
+  <p>2. 예상 개발 툴: <a href={%url 'devtool:detail' idea.devtool.pk %}>{{idea.devtool}}</a></p>
   <p>3. 아이디어 설명: {{idea.content}}</p>
   <p>작성일: {{idea.created_at|date:'Y년 n월 j일 G:i:s'}}</p>
 

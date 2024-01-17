@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Idea
+from django.http import JsonResponse  
+from .models import Idea, IdeaStar
 from .forms import IdeaForm
-
-# Create your views here.
 
 
 def main(request):
@@ -18,6 +17,27 @@ def main(request):
     ctx = {"ideas": ideas}
     return render(request, 'idea/idea_list.html', ctx)
 
+def bookmark(request, pk):
+    if request.method == "POST":
+        idea = Idea.objects.get(id=pk)
+        try:
+            star_idea = idea.ideastar
+            star_idea.delete()
+            bookmark = False
+
+        except Idea.ideastar.RelatedObjectDoesNotExist:
+            IdeaStar.objects.create(idea=idea)
+            bookmark = True
+
+        idea.save()
+    return JsonResponse({'pk': pk, 'bookmark': bookmark})
+
+def change_interest(request, pk, delta):
+    if request.method == 'POST':
+        idea = Idea.objects.get(id=pk)
+        idea.interest += int(delta)
+        idea.save()
+        return JsonResponse({'interest': idea.interest})
 
 def detail(request, pk):
     idea = Idea.objects.get(id=pk)

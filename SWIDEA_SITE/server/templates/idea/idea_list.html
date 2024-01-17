@@ -32,10 +32,21 @@
         {% endif %}
           <div class="info">
             <a href="{% url 'idea:detail' idea.pk %}" class="title">{{idea.title}}</a>
-            <p class="interest">아이디어 관심도: {{idea.interest}}</p>
+            <p class="interest">아이디어 관심도: 
+              <button type="button" class="interest-btn" onclick="changeInterest('{{ idea.id }}', 1)">+</button>
+              <span id="interest-{{ idea.id }}">{{ idea.interest }}</span>
+              <button type="button" class="interest-btn" onclick="changeInterest('{{ idea.id }}', -1)">-</button>
+            </p>
             <p class="created_at">작성일: {{idea.created_at|date:'Y년 n월 j일 G:i:s'}}</p>
           </div>
       </div>
+      <button type="button" class="bookmark-btn" value="{{idea.id}}" id="bookmark-btn-{{idea.id}}">
+        {% if idea.ideastar %} 
+          <i class="ri-star-fill"></i>
+        {% else %}
+          <i class="ri-star-line"></i>
+        {% endif %}
+      </button>
     {% endfor %}
   </div>
 {%endblock%}
