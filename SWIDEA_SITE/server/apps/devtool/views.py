@@ -41,8 +41,9 @@ def create(request):
     else:
         form = DevtoolForm(request.POST)
         if form.is_valid():
-            form.save()
-        return redirect('devtool:list')
+            devtool = form.save()
+            pk = devtool.pk
+        return redirect('devtool:detail', pk=pk)
     
 def delete(request, pk):
     if request.method == "POST":

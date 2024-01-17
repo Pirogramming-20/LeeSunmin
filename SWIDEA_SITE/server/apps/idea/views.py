@@ -74,8 +74,9 @@ def create(request):
     else:
         form = IdeaForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-        return redirect('idea:main')
+            idea = form.save()
+            pk = idea.pk
+        return redirect('idea:detail', pk=pk)
 
 
 def delete(request, pk):
