@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1>{{devtool.name}}</h1>
+  <p>{{devtool.type}}</p>
+  <p>{{devtool.content}}</p>
+
+  <hr />
+  <form action="{% url 'devtool:delete' devtool.pk %}" method="POST">
+    {%csrf_token%}
+    <button type="submit" class="btn btn-danger">삭제</button>
+    <a href="{% url 'devtool:list' %}" class="btn btn-primary">목록</a>
+    <a href="{% url 'devtool:update' devtool.pk %}" class="btn btn-primary">수정</a>
+  </form>
+{% endblock content %}

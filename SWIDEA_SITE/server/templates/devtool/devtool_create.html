@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {%block head%}
-  <title>아이디어 등록</title>
+  <title>개발툴 등록</title>
 {% endblock %}
 
 {%block content%}
   <form
-    action="{% url 'idea:create' %}"
+    action="{% url 'devtool:create' %}"
     method="post"
     enctype="multipart/form-data"
   > <!--enctype을 이렇게 지정해야 폼이 제출된다!-->

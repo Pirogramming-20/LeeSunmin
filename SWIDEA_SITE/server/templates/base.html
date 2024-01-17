@@ -14,8 +14,8 @@
   <main>
     <a href="{% url 'idea:create' %}" class = 'btn btn-secondary mx-2'>아이디어 등록</a>
     <a href="{% url 'idea:main' %}" class = 'btn btn-secondary mx-2'>아이디어 관리</a>
-    {% comment %} <a href="{% url 'devtool:create' %}" class = 'btn btn-secondary mx-2'>개발툴 등록</a> {% endcomment %}
-    {% comment %} <a href="{% url 'devtool:list' %}" class = 'btn btn-secondary mx-2'>개발툴 관리</a> {% endcomment %}
+    <a href="{% url 'devtool:create' %}" class = 'btn btn-secondary mx-2'>개발툴 등록</a>
+    <a href="{% url 'devtool:list' %}" class = 'btn btn-secondary mx-2'>개발툴 관리</a>
     {%block content%}
       
     
