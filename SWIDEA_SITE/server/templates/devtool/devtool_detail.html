@@ -2,18 +2,20 @@
 {% load static %}
 
 {% block content %}
-  <h1>{{devtool.name}}</h1>
+  <h2 style="text-align:center;">DevTool Detail</h1>
+  <h5 style="text-align:center;">개발툴 세부내용 페이지입니다. 자신이 다룰 수 있는 개발툴에 대한 상세내용을 확인해보아요.</h5>
+  <h3>{{devtool.name}}</h3>
   <p>{{devtool.type}}</p>
   <p>{{devtool.content}}</p>
 
-  <hr />
-  <h2>만들 수 있는 SW 목록</h2>
+  <hr>
+  <h5>만들 수 있는 SW 목록</h5>
   {% for rel_idea in related_ideas %}
       <a href="{% url 'idea:detail' rel_idea.pk %}" class="btn btn-success">
         {{rel_idea.title}}
       </a>
   {% endfor %}
-  <hr />
+  <hr>
   <form action="{% url 'devtool:delete' devtool.pk %}" method="POST">
     {%csrf_token%}
     <button type="submit" class="btn btn-danger">삭제</button>

@@ -6,21 +6,18 @@
 {%endblock%}
 
 {%block content%}
-  <div class="search-box">    
-    <form action="/"> <!--GET 방식, form 내용들이 query string으로 들어옴-->
-      <input class = 'form-control mx-2' type="input" name="search_txt" placeholder="검색어..." />
-      <input class = 'btn btn-outline-success mx-2' type="submit" value="검색" />      
-    </form>
-  </div>
-  <div class="content-wrapper">
+  <h2 style="text-align:center;">DevTool List</h1>
+  <h5 style="text-align:center;">개발툴 목록 페이지입니다. 자신이 사용가능한 개발들의 목록을 확인해보세요.</h5>
+  <div class="content-devtool" style="margin:50px;">
     {% for devtool in devtools %}
-      <div class="devtool-item">
+      <div class="container-sm">
           <div class="devtool-info">
-            <a href="{% url 'devtool:detail' devtool.pk %}" class="devtool-name">{{devtool.name}}</a>
-            <p class="devtool-type">{{devtool.type}}</p>
-            <p class="devtool-content">{{devtool.content}}</p>
+            <a href="{% url 'devtool:detail' devtool.pk %}" class="devtool-detail">{{devtool.name}}</a>
+            <div>{{devtool.kind}}</div>
+            <div>{{devtool.content}}</div>
           </div>
       </div>
+      <hr>
     {% endfor %}
   </div>
 {%endblock%}

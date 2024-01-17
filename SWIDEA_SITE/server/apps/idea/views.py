@@ -9,10 +9,14 @@ def main(request):
     sort = request.GET.get('sort', '')
     if sort == 'name':
         ideas = Idea.objects.all().order_by('title')
+    if sort == "bookmark":
+        ideas = Idea.objects.all().order_by('-ideastar')
     if sort == 'order':
         ideas = Idea.objects.all().order_by('created_at')
     if sort == 'recently':
         ideas = Idea.objects.all().order_by('-created_at')
+    if sort == 'interest':
+        ideas = Idea.objects.all().order_by('-interest')
 
     ctx = {"ideas": ideas}
     return render(request, 'idea/idea_list.html', ctx)

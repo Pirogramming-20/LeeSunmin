@@ -2,22 +2,30 @@
 {% load static %}
 
 {% block content %}
-{% if idea.image.url != '' %}
-<img src="{{idea.image.url}}" alt="제품 이미지" />
-{% else %}
-<img src="{% static 'idea/image/no_img.png' %}" alt="대체 텍스트" />
-{% endif %}
-  <h1>{{idea.title}}</h1>
-  {% if idea.ideastar %} 
-    <i class="ri-star-fill"></i>
+<h2 style="text-align:center;">Idea Detail</h1>
+<h5 style="text-align:center;">아이디어 세부내용 페이지 입니다. 당신이 구현하러 한 아이디어들을 자세히 살펴보세요. </h5>
+<div class="row" style="margin:50px;">
+  <div class="col-4" style="align-items:center;">
+  {% if idea.image.url != '' %}
+    <img src="{{idea.image.url}}" style="width:300px; height:300px; object-fit: cover;" alt="제품 이미지" />
   {% else %}
-    <i class="ri-star-line"></i>
+    <img src="{% static 'idea/image/no_img.png' %}" alt="대체 텍스트" />
   {% endif %}
+  </div>
+  <div class="col-6">
+  <h1>{{idea.title}}
+  {% if idea.ideastar %}
+    <i class="ri-star-fill" style="color: yellow; position: absolute; top: 215px; left: 355px; font-size:2rem;"></i>
+  {% else %}
+    <i class="ri-star-line" style="color: yellow; position: absolute; top: 215px; left: 355px; font-size:2rem;"></i>
+  {% endif %}
+  </h1>
   <p>1. 아이디어 관심도: {{idea.interest}}</p>
   <p>2. 예상 개발 툴: <a href={%url 'devtool:detail' idea.devtool.pk %}>{{idea.devtool}}</a></p>
   <p>3. 아이디어 설명: {{idea.content}}</p>
   <p>작성일: {{idea.created_at|date:'Y년 n월 j일 G:i:s'}}</p>
-
+  </div>
+</div>
   <hr />
   <form action="{% url 'idea:delete' idea.pk %}" method="POST">
     {%csrf_token%}

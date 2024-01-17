@@ -5,7 +5,7 @@ from apps.devtool.models import Devtool
 
 
 class Idea(models.Model):
-    title = models.CharField("제목", max_length=50)
+    title = models.CharField("아이디어 명", max_length=50)
     image = models.ImageField('이미지', blank=True, upload_to='idea/%Y%m%d')
     content = models.TextField("아이디어 설명")
     interest = models.IntegerField("아이디어 관심도", default=0)
