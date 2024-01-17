@@ -1,0 +1,28 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{%static 'posts/css/style.css'%}">  
+  {%block head%}
+
+
+  {% endblock %}
+</head>
+<body>
+  <main>
+    <a href="{% url 'idea:create' %}" class = 'btn btn-secondary mx-2'>아이디어 등록</a>
+    <a href="{% url 'idea:main' %}" class = 'btn btn-secondary mx-2'>아이디어 관리</a>
+    {% comment %} <a href="{% url 'devtool:create' %}" class = 'btn btn-secondary mx-2'>개발툴 등록</a> {% endcomment %}
+    {% comment %} <a href="{% url 'devtool:list' %}" class = 'btn btn-secondary mx-2'>개발툴 관리</a> {% endcomment %}
+    {%block content%}
+      
+    
+    {%endblock%}
+  </main>
+  <footer>
+  </footer>
+
+</body>
+</html>

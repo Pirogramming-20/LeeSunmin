@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block head%}
+  <title>My SW Idea Manage</title>
+{%endblock%}
+
+{%block content%}
+  <div class="search-box">    
+    <form action="/"> <!--GET 방식, form 내용들이 query string으로 들어옴-->
+      <input class = 'form-control mx-2' type="input" name="search_txt" placeholder="검색어..." />
+      <input class = 'btn btn-outline-success mx-2' type="submit" value="검색" />      
+    </form>
+  </div>
+  <form method="GET" action={% url 'idea:main' %} >
+    <div class="col-4">
+    <select name="sort" id="sort">
+      <option value="recently" id="recently">최신순</option>
+      <option value="order" id="order">등록순</option>
+      <option value="name" id="name">이름순</option>
+    </select>
+    <button class="btn btn-primary" type="submit" value="">정렬</button>
+  </form>
+
+  <div class="content-wrapper">
+    {% for idea in ideas %}
+      <div class="item">
+        {% if idea.image.url != null and idea.image.url != ''%} 
+          <img src="{{idea.image.url}}" alt="대체 텍스트">
+        {% else %}
+          <img src="{% static 'idea/image/no_img.png'%}" alt="대체 이미지 뜨기">
+        {% endif %}
+          <div class="info">
+            <a href="{% url 'idea:detail' idea.pk %}" class="title">{{idea.title}}</a>
+            <p class="interest">아이디어 관심도: {{idea.interest}}</p>
+            <p class="created_at">작성일: {{idea.created_at|date:'Y년 n월 j일 G:i:s'}}</p>
+          </div>
+      </div>
+    {% endfor %}
+  </div>
+{%endblock%}
