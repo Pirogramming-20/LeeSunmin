@@ -1,19 +1,29 @@
 {% extends 'base.html' %}
 
-{%block head %}
-  <title>아이디어 수정</title>
+{%block head%}
+  <title>My SW Idea Manage</title>
 {%endblock%}
 
 {%block content%}
-  <h2 style="text-align:center;">Idea Detail Update</h1>
+  <h2 style="text-align:center; color:#00ff80;">Idea Detail Update</h1>
   <h5 style="text-align:center;">아이디어 세부내용 수정 페이지 입니다. 아이디어를 구체화하거나 내용을 변경해보아요.</h5>
-
   <form
     action="{% url 'idea:update' pk %}"
     method="post"
     enctype="multipart/form-data"
-  >
-    {%csrf_token%} {{form.as_p}}
-    <button class="btn btn-primary">수정 완료</button>
+    style="display:flex; flex-direction: column; align-items: flex-start; margin:2rem 15rem; font-size: 1rem;"
+  > 
+    {%csrf_token%}
+    <h5>아이디어 명</h5>
+    <p>{{form.title}}</p>
+    <h5>이미지</h5>
+    <p>{{form.image}}</p>
+    <h5>아이디어 설명</h5>
+    <p>{{form.content}}</p>
+    <h5>아이디어 관심도</h5>
+    <p>{{form.interest}}</p>
+    <h5>예상 개발툴</h5>
+    <p>{{form.devtool}}</p>
+    <button class="btn btn-success">수정완료</button>
   </form>
 {%endblock%}

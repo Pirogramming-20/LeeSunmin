@@ -19,17 +19,20 @@
 </head>
 <body>
   <main>
-    <div id="header">
-      <a href="{% url 'idea:main' %}" >My SW Idea Manage</a>
-      <a href="{% url 'idea:create' %}" class = 'btn btn-secondary mx-2'>아이디어 등록</a>
-      <a href="{% url 'idea:main' %}" class = 'btn btn-secondary mx-2'>아이디어 관리</a>
-      <a href="{% url 'devtool:create' %}" class = 'btn btn-secondary mx-2'>개발툴 등록</a>
-      <a href="{% url 'devtool:list' %}" class = 'btn btn-secondary mx-2'>개발툴 관리</a>
-    </div>
-    {%block content%}
-      
     
-    {%endblock%}
+    <div id="header" style="margin-bottom: 50px">
+      <a href="{% url 'idea:main' %}" style="color:#00ff80;">My SW Idea Manage</a>
+      <a href="{% url 'idea:create' %}">아이디어 등록</a>
+      <a href="{% url 'idea:main' %}">아이디어 관리</a>
+      <a href="{% url 'devtool:create' %}">개발툴 등록</a>
+      <a href="{% url 'devtool:list' %}">개발툴 관리</a>
+    </div>
+    <div id="block">
+      {%block content%}
+        
+      
+      {%endblock%}
+    </div>
   </main>
 
   <script>

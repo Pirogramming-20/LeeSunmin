@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {%block head%}
-  <title>개발툴 등록</title>
-{% endblock %}
+  <title>My SW Idea Manage</title>
+{%endblock%}
 
 {%block content%}
-  <h2 style="text-align:center;">DevTool Register</h1>
+  <h2 style="text-align:center; color:#00ff80;">DevTool Register</h1>
   <h5 style="text-align:center;">개발툴 등록 페이지입니다. 자신이 다룰 수 있는 개발툴을 등록해보세요.</h5>
   <form
     action="{% url 'devtool:create' %}"
     method="post"
     enctype="multipart/form-data"
+    style="display:flex; flex-direction: column; align-items: flex-start; margin:2rem 15rem; font-size: 1rem;"
   > <!--enctype을 이렇게 지정해야 폼이 제출된다!-->
-    {%csrf_token%} {{form.as_p}}
+    {%csrf_token%} 
+    <h5>이름</h5>
+    <p>{{form.name}}</p>
+    <h5>종류</h5>
+    <p>{{form.kind}}</p>
+    <h5>개발툴 설명</h5>
+    <p>{{form.content}}</p>
     <button class="btn btn-success">등록하기</button>
   </form>
 {%endblock%}

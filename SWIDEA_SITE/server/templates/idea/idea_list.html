@@ -6,6 +6,8 @@
 {%endblock%}
 
 {%block content%}
+  <h2 style="text-align:center; color:#00ff80;">Idea List</h1>
+  <h5 style="text-align:center;">나의 아이디어를 잊지 말고 기록해보세요</h5>
   <form method="GET" action="{% url 'idea:main' %}" id="order">
     <select name="sort" id="sort">
       <option value="" id="">------</option>
@@ -17,8 +19,6 @@
     </select>
     <button class="btn btn-primary" type="submit" value="">정렬</button>
   </form>
-  <h2 style="text-align:center;">Idea List</h1>
-  <h5 style="text-align:center;">나의 아이디어를 잊지 말고 기록해보세요</h5>
   <div class="row row-cols-1 row-cols-md-4 g-4" style="margin:30px;">
     {% for idea in page_obj %}
       <div class="col">
@@ -49,10 +49,10 @@
       </div>
     {% endfor %}
   </div>
-  <ul style="display:flex; align-items:center; justify-content:center; list-style:none;">
+  <ul style="display:flex; align-items:center; justify-content:center; list-style:none; gap:0.8rem; font-size:1.5rem;">
     {% for page in paginator.page_range %}
       {% if page == page_obj.number %}
-        <li style="margin:3px;"><a style="color:red" href="?page={{page}}&sort={{sort}}">{{page}}</a></li>
+        <li style="margin:3px;"><a style="color:#00ff80;" href="?page={{page}}&sort={{sort}}">{{page}}</a></li>
       {% else %}
         <li style="margin:3px;"><a href="?page={{page}}&sort={{sort}}">{{page}}</a></li>  
       {% endif %}      

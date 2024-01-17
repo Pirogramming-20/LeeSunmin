@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{%block head %}
-  <title>개발툴 수정</title>
+{%block head%}
+  <title>My SW Idea Manage</title>
 {%endblock%}
 
 {%block content%}
-  <h2 style="text-align:center;">DevTool Detail Update</h1>
+  <h2 style="text-align:center; color:#00ff80;">DevTool Detail Update</h1>
   <h5 style="text-align:center;">개발툴 세부내용 수정페이지입니다. 개발툴에 대해 수정사항이 있으면 고쳐보아요.</h5>
   <form
     action="{% url 'devtool:update' pk %}"

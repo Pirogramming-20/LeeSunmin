@@ -1,7 +1,10 @@
 @import "./nomalize.css";
 
-html {
-  margin: 0 50px;
+@font-face {
+  font-family: 'Dovemayo_gothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 a {
@@ -15,6 +18,27 @@ button {
   padding: 0;
   margin: 0;
   cursor: pointer;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../../../media/idea/20240117/coding_image2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: 'Dovemayo_gothic';
+}
+
+main {
+  margin: 0 50px;
+}
+
+#block {
+  background-color: rgba(169, 169, 169, 0.5);
+  margin: 30px 50px;
+  padding: 30px 0;
 }
 
 #header {
@@ -31,7 +55,7 @@ button {
   justify-content: end;
 }
 
-.devtool-info{
+.devtool-info {
   display: flex;
   align-items: flex-start;
   gap: 60px;
