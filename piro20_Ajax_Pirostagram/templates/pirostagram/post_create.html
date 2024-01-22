@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
 {%block content%}
-  <form
-    action="{% url 'pirostagram:create' %}"
-    method="post"
-    enctype="multipart/form-data"
-  > <!--enctype을 이렇게 지정해야 폼이 제출된다!-->
-    {%csrf_token%} {{form.as_p}}
-    <button class="btn btn-success">등록하기</button>
-  </form>
+  <div class="post-create">
+    <div class="post-create-title">새로운 글 작성</div>
+    <div class="post-create-content">
+      <form
+        action="{% url 'pirostagram:create' %}"
+        method="post"
+        enctype="multipart/form-data"
+      > <!--enctype을 이렇게 지정해야 폼이 제출된다!-->
+        {%csrf_token%} {{form.as_p}}
+        <button class="btn btn-success">등록하기</button>
+      </form>
+    </div>
+  </div>
 {%endblock%}

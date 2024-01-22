@@ -1,0 +1,86 @@
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 90%;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(169, 169, 169, 0.3);
+}
+
+.signup-title {
+    font-size: 30px;
+}
+
+.signup-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.signup-content div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+#id_password1_helptext ul {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.signup-content input {
+    width: 200px;
+    padding: 4px;
+    font-size: 15px;
+}
+
+.signup-content textarea {
+    padding: 4px;
+    font-size: 15px;
+    height: 90px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(169, 169, 169, 0.3);
+}
+
+.login-title {
+    font-size: 30px;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.login-content div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+
+.login-content input {
+    width: 200px;
+    padding: 4px;
+    font-size: 15px;
+}

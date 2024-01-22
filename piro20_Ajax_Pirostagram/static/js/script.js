@@ -17,7 +17,7 @@ requestComment.onreadystatechange = () => {
         requestComment.response
       );
       const commentTag = document.createElement("p");
-      commentTag.innerHTML = `${writer}: ${comment} <button onclick="onClickDelete(${comment_id})">삭제</button>`;
+      commentTag.innerHTML = `${writer}: ${comment} <button onclick="onClickDelete(${comment_id})" class="btn btn-outline-dark">삭제</button>`;
       commentTag.className = "post-comment";
       commentTag.id = `comment-${comment_id}`;
       const inputTag = document.querySelector(`#comment-content-${id}`);

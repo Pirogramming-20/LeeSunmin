@@ -1,0 +1,50 @@
+header {
+    font-family: 'locus_sangsang';
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #716094;
+    color: white;
+    position: fixed;
+    height: 70px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    font-size: 20px;
+    z-index:100;
+}
+
+.title {
+    flex: 1;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+li {
+    display: inline;
+    list-style: none;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}

@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST" action="{% url 'users:signup' %}">
-    {% csrf_token %}
-    {{ form }}
-    <button class="btn btn-success">회원가입</button>
-</form>
-
+<div class="signup">
+    <div class="signup-title">회원 가입</div>
+    <div class="signup-content">
+    <form method="POST" action="{% url 'users:signup' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-success">회원가입</button>
+    </form>
+    </div>
+</div>
 {% endblock content %}

@@ -3,41 +3,58 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-{% for post_item in post_info %}
-    <div class="post-item" id="post-item-{{post_item.post.id}}">
-        {% if post.photo.url != null and post_item.post.photo.url != ''%} 
-          <img src="{{post_item.post.photo.url}}" alt="대체 텍스트">
-        {% else %}
-          <img src="{% static '/image/no_img.png'%}" alt="대체 이미지 뜨기">
-        {% endif %}
-        <p class="post-content">{{post_item.post.content}}</p>
-        <p class="post-like">좋아요수: {{post_item.post.like_users.all.count}}</p>
+<div class="row row-cols-1 row-cols-md-3 g-4" id="post-container">
+  {% for post_item in post_info %}
+  <div class="col" id="post-item-{{post_item.post.id}}">
+    <div class="card h-100" style="width:auto;">
+      {% if post_item.post.photo.url != null and post_item.post.photo.url != ''%}
+      <img src="{{post_item.post.photo.url}}" alt="대체 텍스트" class="card-img-top">
+      {% else %}
+      <img src="{% static '/image/no_img.png'%}" alt="대체 이미지 뜨기" class="card-img-top">
+      {% endif %}
+      <div class="card-body">
         {% if request.user in post_item.post.like_users.all %}
-          <button onclick="onClickLike({{post_item.post.pk}}, '{{user|safe}}')" class="heart"><i class="ri-heart-3-fill"></i></button>
+        <div style="display: flex; align-items: center; justify-content:center;">
+          <div class="post-like">좋아요 {{post_item.post.like_users.all.count}}</div>
+          <button onclick="onClickLike({{post_item.post.pk}}, '{{user|safe}}')" class="heart"><i
+              class="ri-heart-3-fill"></i></button>
+        </div>
         {% else %}
+        <div style="display: flex; align-items: center; justify-content:center;">
+          <div class="post-like">좋아요 {{post_item.post.like_users.all.count}}</div>
           <button onclick="onClickLike({{post_item.post.pk}}, '{{user|safe}}')" class="heart"><i class="ri-heart-3-line"></i></button>
+        </div>
         {% endif %}
-      </form>
-        <p class="post-writer">작성자: {{post_item.post.writer}}</p>
-        <p class="post-date">작성날짜: {{post_item.post.created_at}}</p>
+        <p class="card-text">{{post_item.post.content}}</p>
+        <p class="card-text"><span style="color:#716094;">{{post_item.post.writer}}</span>님이 <span style="color:#716094;">{{post_item.post.created_at}}</span>에 작성</p>
         {% for comment in post_item.comments %}
-          {% if comment.writer == request.user %}
-            <p class="post-comment" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}
-              <button onclick="onClickDelete({{comment.id}})">삭제</button>
-            </p>
-          {% else %}
-            <p class="post-comment" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}</p>
-          {% endif %}
+        {% if comment.writer == request.user %}
+        <p class="card-text" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}
+          <button onclick="onClickDelete({{comment.id}})" class="btn btn-outline-dark">삭제</button>
+        </p>
+        {% else %}
+        <p class="card-text" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}</p>
+        {% endif %}
         {% endfor %}
         <div class="post-comment-write">
           <form class="post-comment-write-form">
             <label for="comment-content">댓글 작성:</label>
             <input type="text" id="comment-content-{{post_item.post.id}}"></input>
-            <button type="button" onclick="onClickComment({{post_item.post.id}}, document.getElementById('comment-content-{{post_item.post.id}}').value)">완료</button>
+            <button type="button"
+              onclick="onClickComment({{post_item.post.id}}, document.getElementById('comment-content-{{post_item.post.id}}').value)"
+              class="btn btn-outline-dark">완료</button>
           </form>
         </div>
-</form>
+      </div>
     </div>
-{% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="intro">
+  <img src="{% static 'image/background.jpg' %}"></img>
+  <p>PiroStagram은 본인의 일상을 적고, 공유하는 공간입니다.</p>
+  <p>로그인 후 사용해주세요</p>
+</div>
 {% endif %}
 {% endblock %}
