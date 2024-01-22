@@ -1,0 +1,24 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Sunmin blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <script defer src="{% static 'js/script.js' %}"></script>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/blog.css' %}"> {% endcomment %}
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'users:logout' %}">Logout</a></li>
+    {% else %}
+        <li><a href="{% url 'users:login' %}">Login</a></li>
+        <li><a href="{% url 'users:signup' %}">Signup</a></li>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% for post_item in post_info %}
+    <div class="post-item" id="post-item-{{post_item.post.id}}">
+        {% if post.photo.url != null and post_item.post.photo.url != ''%} 
+          <img src="{{post_item.post.photo.url}}" alt="대체 텍스트">
+        {% else %}
+          <img src="{% static '/image/no_img.png'%}" alt="대체 이미지 뜨기">
+        {% endif %}
+        <p class="post-content">{{post_item.post.content}}</p>
+        <p class="post-like">좋아요수: {{post_item.post.like_users.all.count}}</p>
+        {% if request.user in post_item.post.like_users.all %}
+          <button onclick="onClickLike({{post_item.post.pk}}, '{{user|safe}}')" class="heart"><i class="ri-heart-3-fill"></i></button>
+        {% else %}
+          <button onclick="onClickLike({{post_item.post.pk}}, '{{user|safe}}')" class="heart"><i class="ri-heart-3-line"></i></button>
+        {% endif %}
+      </form>
+        <p class="post-writer">작성자: {{post_item.post.writer}}</p>
+        <p class="post-date">작성날짜: {{post_item.post.created_at}}</p>
+        {% for comment in post_item.comments %}
+          {% if comment.writer == request.user %}
+            <p class="post-comment" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}
+              <button onclick="onClickDelete({{comment.id}})">삭제</button>
+            </p>
+          {% else %}
+            <p class="post-comment" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}</p>
+          {% endif %}
+        {% endfor %}
+        <div class="post-comment-write">
+          <form class="post-comment-write-form">
+            <label for="comment-content">댓글 작성:</label>
+            <input type="text" id="comment-content-{{post_item.post.id}}"></input>
+            <button type="button" onclick="onClickComment({{post_item.post.id}}, document.getElementById('comment-content-{{post_item.post.id}}').value)">완료</button>
+          </form>
+        </div>
+</form>
+    </div>
+{% endfor %}
+{% endif %}
+{% endblock %}
