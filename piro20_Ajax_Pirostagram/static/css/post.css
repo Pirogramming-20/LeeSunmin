@@ -1,5 +1,6 @@
 #post-container {
     margin: 80px;
+    height: auto;
 }
 
 #post-container img {
@@ -12,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50%;
+    height: 300px;
     width: 50%;
     margin: 0 auto;
     margin-top: 40px;
@@ -34,4 +35,12 @@
 .heart i {
     color:#716094;
     font-size: 20px;
+}
+
+.delete_update {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
 }

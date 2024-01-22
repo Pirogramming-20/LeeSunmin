@@ -27,6 +27,20 @@
         {% endif %}
         <p class="card-text">{{post_item.post.content}}</p>
         <p class="card-text"><span style="color:#716094;">{{post_item.post.writer}}</span>님이 <span style="color:#716094;">{{post_item.post.created_at}}</span>에 작성</p>
+        {% if request.user == post_item.post.writer %}
+        <div class="card-text delete_update">본인 게시물 삭제/수정:
+        <form method="POST" action="{% url 'pirostagram:delete' post_item.post.pk %}">
+          {%csrf_token%}
+          <button class="btn btn-outline-dark">삭제</button>
+        </form>
+        <form method="GET" action="{% url 'pirostagram:update' post_item.post.pk%}">
+          {%csrf_token%}
+          <button class="btn btn-outline-dark">수정</button>
+        </form>
+        </div>
+        {% endif %}
+        <hr>
+        <p class="card-text" style="color:#716094;">이 게시물에 달린 댓글</p>
         {% for comment in post_item.comments %}
         {% if comment.writer == request.user %}
         <p class="card-text" id="comment-{{comment.id}}">{{comment.writer}}: {{comment.content}}

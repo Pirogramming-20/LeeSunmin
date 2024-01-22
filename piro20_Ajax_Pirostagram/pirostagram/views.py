@@ -31,6 +31,32 @@ def create(request):
         }
     return render(request, 'pirostagram/post_create.html', context)
 
+def delete(request, pk):
+    if request.method == "POST":
+        post = Post.objects.get(id=pk)
+        if post.writer == request.user:
+            post.delete()
+            return redirect('pirostagram:main')
+        else:
+            return redirect('pirostagram:main')
+
+def update(request, pk):
+    if request.method == "POST":
+        post = Post.objects.get(id=pk)
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('pirostagram:main')
+    else:
+        post = Post.objects.get(id=pk)
+        form = PostForm(instance=post)
+        context = {
+            'form': form,
+            'pk': pk,
+        }
+        print(context)
+        return render(request, 'pirostagram/post_update.html', context)
+
 # 1. 댓글 작성
 @csrf_exempt
 @login_required
